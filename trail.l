@@ -15,14 +15,11 @@ letter    [A-Za-z]
  // Variable names are case-sensitive (age, Age and AGE are three different variables)
  // Reserved words cannot be used as variables (TRUE, FALSE, NULL, if...)
 
- ("#"({letter}|[0-9]|[[^a-zA-Z0-9])*)    {printf("%s - Comments \n",yytext);}  //Comments
 "<-"|"->"|"+"|"-"|"*"|"/"|"^"|"%%"|"%/%" {printf("%s - Operators \n",yytext);}     // Operaters
-([0-9]+)|([0-9]+"."[0-9]+)|([\"][a-zA-Z][\"])|"True"|"False"  {printf("%s - Constants \n",yytext);} 
+([0-9]+)|([0-9]+"."[0-9]+)|(\"[a-zA-Z]\")|"True"|"False"  {printf("%s - Constants \n",yytext);} 
 ({letter}({letter}|[.]|[_]|[0-9])*)|([.]({letter}|[_])({letter}|[.]|[_]|[0-9])*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
 
 
-
-.|\n                   { /* Ignore any other characters */ }
 
 %%   
 int yywrap(void){return 1;}   
