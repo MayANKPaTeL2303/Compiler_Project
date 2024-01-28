@@ -4,10 +4,26 @@
 int i = 0; 
 %}   
 /* Rules Section*/
+letter    [A-Za-z]
 %% 
+<<<<<<< HEAD
 [a-zA-Z]([a-zA-Z]|[0-9]|[_])*     {printf("%s - Identifiers\n",yytext);}   //For Identifier
 "<-"|"->"|"+"|"-"|"*"|"/"|"^"|"%%"|"%/%" {printf("%s - Operators \n",yytext);}     	  // Operaters
 [0-9]+|[0-9]+"."[0-9]+|\"[a-zA-Z]+\"|True|Flase  {printf("Constants \n");} 
+=======
+
+ //Rules for R variables are:
+ //A variable name must start with a letter and can be a combination of letters, digits, period(.)
+ //and underscore(_). If it starts with period(.), it cannot be followed by a digit.
+ //A variable name cannot start with a number or underscore (_)
+ // Variable names are case-sensitive (age, Age and AGE are three different variables)
+ // Reserved words cannot be used as variables (TRUE, FALSE, NULL, if...)
+
+
+"<-"|"->"|"+"|"-"|"*"|"/"|"^"|"%%"|"%/%" {printf("%s - Operators \n",yytext);}     // Operaters
+[0-9]+|[0-9]+"."[0-9]+|\"[a-zA-Z]+\"|True|False  {printf("Constants \n");} 
+({letter}({letter}|(.)|(_)|(0-9))*)|([.]({letter}|[_])({letter}|(.)|(_)|(0-9))*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
+>>>>>>> 1b9f289 (THird)
 
 %%   
 int yywrap(void){return 1;}   
@@ -16,4 +32,3 @@ int main()
       yylex();   
      return 0; 
 } 
-
