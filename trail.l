@@ -5,6 +5,7 @@ int i = 0;
 %}   
 
 letter    [A-Za-z]
+number    [0-9]
 
 %% 
 
@@ -16,8 +17,13 @@ letter    [A-Za-z]
  // Reserved words cannot be used as variables (TRUE, FALSE, NULL, if...)
 
 "<-"|"->"|"+"|"-"|"*"|"/"|"^"|"%%"|"%/%" {printf("%s - Operators \n",yytext);}     // Operaters
-([0-9]+)|([0-9]+"."[0-9]+)|(\"[a-zA-Z]\")|"True"|"False"  {printf("%s - Constants \n",yytext);} 
-({letter}({letter}|[.]|[_]|[0-9])*)|([.]({letter}|[_])({letter}|[.]|[_]|[0-9])*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
+({number}{number}*)[.]({number}{number}*)  {printf("%s - Numeric Type \n",yytext);}
+{number}{number}* {printf("%s - Integer Type \n",yytext);} 
+{number}[i]     {printf("%s - Complex Type \n",yytext);}
+ 
+
+({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
+
 
 
 
@@ -25,6 +31,7 @@ letter    [A-Za-z]
 int yywrap(void){return 1;}   
 int main() 
 {    
+      printf("Enter the input");
       yylex();   
      return 0; 
 } 
