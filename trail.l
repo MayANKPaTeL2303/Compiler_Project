@@ -30,6 +30,8 @@ number    [0-9]
 "while"    {printf("%s - While Loop\n",yytext);}
 "for"      {printf("%s - For Loop\n",yytext);}
 "print"    {printf("%s - Print the variable value\n",yytext);}
+"function()" {printf("%s - Function \n",yytext);}
+"return" {printf("%s - Rreturn \n",yytext);}
 (\"({letter})*\")|(\'({letter})*\') {printf("%s - String \n",yytext);}
 ({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
 
