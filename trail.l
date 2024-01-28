@@ -20,7 +20,7 @@ number    [0-9]
 ({number}{number}*)[.]({number}{number}*)  {printf("%s - Numeric Type \n",yytext);}
 {number}{number}* {printf("%s - Integer Type \n",yytext);} 
 {number}[i]     {printf("%s - Complex Type \n",yytext);}
- 
+(\"([a-zA-Z])*\")|(\'([a-zA-Z])*\') {printf("%s - String \n",yytext);}
 
 ({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
 
