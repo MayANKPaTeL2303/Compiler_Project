@@ -4,7 +4,7 @@
 int i = 0; 
 %}   
 
-letter    [A-Za-z]
+letter    [A-Za-z]s
 number    [0-9]
 
 %% 
@@ -43,6 +43,7 @@ number    [0-9]
 ({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
 
 "#".*   { printf("%s - Comment\n", yytext); } // comment
+
 
 
 
