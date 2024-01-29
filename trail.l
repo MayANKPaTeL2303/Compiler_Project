@@ -35,7 +35,7 @@ number    [0-9]
 "return" {printf("%s - Return \n",yytext);}
 "else if" {printf("%s - Else_if \n",yytext);}
 "else" {printf("%s - Else \n",yytext);}
-[(][A-Za-z]*[)]  {printf("%s - Function Call \n",yytext);}
+[A-Za-z]*[(][)]  {printf("%s - Function Call \n",yytext);}
 
 (\"({letter})*\")|(\'({letter})*\') {printf("%s - String \n",yytext);}
 ({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
