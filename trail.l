@@ -42,6 +42,7 @@ number    [0-9]
 
 ({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
 
+"#".*   { printf("%s - Comment\n", yytext); } // comment
 
 
 
