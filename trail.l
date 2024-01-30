@@ -24,18 +24,18 @@ number    [0-9]
 
 ({number}{number}*)[.]({number}{number}*)  {printf("%s - Numeric Type \n",yytext);}
 {number}{number}* {printf("%s - Integer Type \n",yytext);} 
-{number}[i]     {printf("%s - Complex Type \n",yytext);}
+{number}*[+]{number}*[i]|{number}*[-]{number}*[i]    {printf("%s - Complex Type \n",yytext);}
 "TRUE"|"FALSE"  {printf("%s - Booleans\n",yytext);}
 
 "if" {printf("%s - If \n",yytext);}
 "while"    {printf("%s - While Loop\n",yytext);}
 "for"      {printf("%s - For Loop\n",yytext);}
 "print"    {printf("%s - Print the variable value\n",yytext);}
-"function" {printf("%s - Function \n",yytext);}
+"function"[(].*[)] {printf("%s - Function \n",yytext);}
 "return" {printf("%s - Return \n",yytext);}
 "else if" {printf("%s - Else_if \n",yytext);}
 "else" {printf("%s - Else \n",yytext);}
-[A-Za-z]*[(][)]  {printf("%s - Function Call \n",yytext);}
+[(][A-Za-z]*[)]  {printf("%s - Function Call \n",yytext);}
 
 (\"({letter})*\")|(\'({letter})*\') {printf("%s - String \n",yytext);}
 ({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
