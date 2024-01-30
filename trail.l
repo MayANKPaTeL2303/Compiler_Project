@@ -17,34 +17,51 @@ ID   	({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]
  // Variable names are case-sensitive (age, Age and AGE are three different variables)
  // Reserved words cannot be used as variables (TRUE, FALSE, NULL, if...)
 
-"+"|"-"|"*"|"/"|"^"|"%%"|"%/%" {printf("%s - Arithmetic Operators \n",yytext);}     // Operaters
-"=="|"!="|">"|"<"|">="|"<=" {printf("%s - Comparison Operators \n",yytext);}
-"&"|"&&"|"|"|"||"|"!" {printf("%s - Logical Operators \n",yytext);}
-"<-"|"<<-"|"->"|"->>"|"=" {printf("%s - Assignment Operators \n",yytext);}
-":"|"%in%"|"%*%" {printf("%s - Miscellaneous Operators \n",yytext);}
+"+"|"-"|"*"|"/"|"^"|"%%"|"%/%" {printf("%s - Arithmetic Operators \n",yytext);} // Arithmetic Operaters
+"=="|"!="|">"|"<"|">="|"<=" {printf("%s - Comparison Operators \n",yytext);}//Comparison Operators
+"&"|"&&"|"|"|"||"|"!" {printf("%s - Logical Operators \n",yytext);}//Logical Operators
+"<-"|"<<-"|"->"|"->>"|"=" {printf("%s - Assignment Operators \n",yytext);}//Assignment Operators
+":"|"%in%"|"%*%" {printf("%s - Miscellaneous Operators \n",yytext);}//Miscellaneous Operators
 
-({number}{number}*)[.]({number}{number}*)  {printf("%s - Numeric Type \n",yytext);}
-{number}{number}* {printf("%s - Integer Type \n",yytext);} 
-{number}*[+]{number}*[i]|{number}*[-]{number}*[i]|{number}*[i]|{number}*[i][+]{number}*|{number}*[i][-]{number}*     {printf("%s - Complex Type \n",yytext);}
-"TRUE"|"FALSE"  {printf("%s - Booleans\n",yytext);}
 
-"if" {printf("%s - If \n",yytext);}
-"while"    {printf("%s - While Loop\n",yytext);}
-"for"\s*\(|"for "\s*\(       {printf("%s - For Loop\n",yytext);}
-"print"\s*\(    {printf("%s - Print\n",yytext);}
-"paste"     {printf("%s - Paste\n",yytext);}
-"function"[(].*[)] {printf("%s - Function \n",yytext);}
-"return" {printf("%s - Return \n",yytext);}
-"else if" {printf("%s - Else_if \n",yytext);}
-"class"   {printf("%s - Class \n",yytext);}
-"else" {printf("%s - Else \n",yytext);}
+"class"\s*\(    {printf("%s - Class \n",yytext);} // Class Function
+({number}{number}*)[.]({number}{number}*)|{number}{number}*  {printf("%s - Numeric Type \n",yytext);}// NNumeric data Type 
+{number}{number}*"L" {printf("%s - Integer Type \n",yytext);} // Integer data Type
+{number}*[+]{number}*[i]|{number}*[-]{number}*[i]|{number}*[i]|{number}*[i][+]{number}*|{number}*[i][-]{number}*     {printf("%s - Complex Type \n",yytext);} // Complex data Type
+"TRUE"|"FALSE"  {printf("%s - Booleans\n",yytext);} //  Booleans data Type 
 
-{ID}\s*\(  {printf("%s - Function Call \n",yytext);}
 
-{ID}  {printf("%s - Identifiers\n",yytext);}   //For Identifier
-  
-(["].*["])|(['].*[']) {printf("%s - String \n",yytext);}
+break  {printf("%s - Break \n",yytext);} //BREAK statement
+next   {printf("%s - Next \n",yytext);} //Next	Statement
 
+
+"return" {printf("%s - Return \n",yytext);} // Return() function
+
+"while"\s*\(|"while "\s*\(    {printf("%s - While Loop\n",yytext);}// While LOOP
+"for"\s*\(|"for "\s*\(       {printf("%s - For Loop\n",yytext);}// FOR LOOP
+
+
+"print"\s*\(    {printf("%s - Print\n",yytext);}// PRINT FUNCTION
+"paste"\s*\(    {printf("%s - Paste\n",yytext);}// PASTE FUNCTION
+
+
+"if"\s*\(|"if "\s*\(  {printf("%s - If \n",yytext);} // IF Statement
+"else if"\s*\(|"else if "\s*\(  {printf("%s - Else_if \n",yytext);}//ELSE IF  Statement
+"else"\s*\{|"else "\s*\{ {printf("%s - Else \n",yytext);} // ELse Statement
+
+
+"which.max"[(]       {printf("%s - Max function(Find the maximum value \n",yytext);} //WHICH _MAX FUNCTION
+"which.min"[(]          {printf("%s - Min function(Find the minimum value \n",yytext);}// WHICH_MIN FUNCTION
+"rownames"[(]         {printf("%s - Rowname function \n ",yytext);}//ROWNAMES
+"mean"[(]          {printf("%s - Mean function(Give the mean of the data set \n ",yytext);}//MEAN FUNCTION
+"median"[(]         {printf("%s - Median function(Give the median of the dataset \n",yytext);}//MEDIAN FUNCTION
+"sort"[(]        {printf("%s - Sort function(sort the data set \n",yytext);}// SORT FUNCTION
+
+"function"[(].*[)] {printf("%s - Function \n",yytext);} // function() Keyword
+{ID}\s*\(  {printf("%s - Function Call \n",yytext);} // Call a Function
+
+{ID}  {printf("%s - Identifiers\n",yytext);}   //For Identifier  
+(["].*["])|(['].*[']) {printf("%s - String \n",yytext);} // Strings
 "#".*   { printf("%s - Comment\n", yytext); } // comment
  
 %%   
