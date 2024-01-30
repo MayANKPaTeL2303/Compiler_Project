@@ -6,6 +6,7 @@ int i = 0;
 
 letter    [A-Za-z]
 number    [0-9]
+ID   	({letter}({letter}|[.]|[]|{number})*)|([.]({letter}|[])({letter}|[.]|[_]|{number})*)
 
 %% 
 
@@ -22,28 +23,37 @@ number    [0-9]
 "<-"|"<<-"|"->"|"->>" {printf("%s - Assignment Operators \n",yytext);}
 ":"|"%in%"|"%*%" {printf("%s - Miscellaneous Operators \n",yytext);}
 
-({number}{number}*)[.]({number}{number}*)  {printf("%s - Numeric Type \n",yytext);}
+({number}{number})[.]({number}{number})  {printf("%s - Numeric Type \n",yytext);}
 {number}{number}* {printf("%s - Integer Type \n",yytext);} 
-{number}*[+]{number}*[i]|{number}*[-]{number}*[i]    {printf("%s - Complex Type \n",yytext);}
+{number}[+]{number}[i]|{number}[-]{number}[i]    {printf("%s - Complex Type \n",yytext);}
 "TRUE"|"FALSE"  {printf("%s - Booleans\n",yytext);}
 
 "if" {printf("%s - If \n",yytext);}
 "while"    {printf("%s - While Loop\n",yytext);}
 "for"      {printf("%s - For Loop\n",yytext);}
-"print"    {printf("%s - Print the variable value\n",yytext);}
+"print"    {printf("%s - Print\n",yytext);}
+"paste"     {printf("%s - Paste\n",yytext);}
 "function"[(].*[)] {printf("%s - Function \n",yytext);}
 "return" {printf("%s - Return \n",yytext);}
 "else if" {printf("%s - Else_if \n",yytext);}
+"class"   {printf("%s - Class \n",yytext);}
 "else" {printf("%s - Else \n",yytext);}
-[(][A-Za-z]*[)]  {printf("%s - Function Call \n",yytext);}
 
-(\"({letter})*\")|(\'({letter})*\') {printf("%s - String \n",yytext);}
-({letter}({letter}|[.]|[_]|{number})*)|([.]({letter}|[_])({letter}|[.]|[_]|{number})*)  {printf("%s - Identifiers\n",yytext);}   //For Identifier
+"which.max"[(]{ID}[)]        {printf("%s - Max function(Find the maximum       value",yytext);}
+"which.min"[(]{ID}[)]          {printf("%s - Min function(Find the minimum value",yytext);}
+"rownames"[(]{ID}[)]          {printf("%s - Rowname function",yytext);}
+"mean"[(]{ID}[)]          {printf("%s - Mean function(Give the mean of the data set",yytext);}
+"median"[(]{ID}[)]          {printf("%s - Median function(Give the median of the data set",yytext);}
+"sort"[(]{ID}[)]          {printf("%s - Sort function(sort the data set",yytext);}
+
+{ID}\s*\(  {printf("%s - Function Call \n",yytext);}
+
+{ID}  {printf("%s - Identifiers\n",yytext);}   //For Identifier
+  
+(["].["])|(['].[']) {printf("%s - String \n",yytext);}
 
 "#".*   { printf("%s - Comment\n", yytext); } // comment
-
-
-
+ 
 %%   
 int yywrap(void){return 1;}   
 int main() 
@@ -52,4 +62,4 @@ int main()
       printf("\n");
       yylex();   
      return 0; 
-} 
+}
