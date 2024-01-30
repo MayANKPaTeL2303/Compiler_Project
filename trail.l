@@ -23,8 +23,8 @@ ID   	({letter}({letter}|[.]|[]|{number})*)|([.]({letter}|[])({letter}|[.]|[_]|{
 "<-"|"<<-"|"->"|"->>" {printf("%s - Assignment Operators \n",yytext);}
 ":"|"%in%"|"%*%" {printf("%s - Miscellaneous Operators \n",yytext);}
 
-({number}{number})[.]({number}{number})  {printf("%s - Numeric Type \n",yytext);}
-{number}{number}* {printf("%s - Integer Type \n",yytext);} 
+({number}{number}*)([.]{number}{number}*)  {printf("%s - Numeric Type \n",yytext);}
+{number}{number}*"L" {printf("%s - Integer Type \n",yytext);} 
 {number}[+]{number}[i]|{number}[-]{number}[i]    {printf("%s - Complex Type \n",yytext);}
 "TRUE"|"FALSE"  {printf("%s - Booleans\n",yytext);}
 
