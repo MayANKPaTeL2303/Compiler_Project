@@ -94,6 +94,8 @@ TRUE <- "John"
   "Data_Cars$hp".
 * mean,median,sort - Use to find the mean,median and sort of       the data set.
 
+---
+
 6. Comments
 * Comments starts with a #.
 * Eg. # This is a comment.
