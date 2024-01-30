@@ -117,8 +117,6 @@ Go to the project directory
 ```
 
 ```bash
-  lex trail.l
-  gcc lex.yy.c
-  ./a.out
+  lex trail.l && gcc lex.yy.c && ./a.out
 ```
 
