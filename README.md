@@ -11,6 +11,92 @@ The R programming language is used for statistical computing and data visualizat
 
 ---
 
+# Code To Run
+var1 <- var2 <- var3 <- "Orange" \
+my_var <<- 3
+
+x <- 10.5   # numeric \
+y <- 10L    # integer \
+z <- 1i	    # complex
+
+10 > 9     \
+10 == 9    \
+10 < 9    
+
+class(x) \
+print(name) \
+paste("R is", text) 
+
+
+if (b > a) {
+  print ("b is greater than a")
+} \
+else if (b==a){
+	print ("b is equal to a")
+} \
+else {
+  print("b is not greater than a")
+}
+
+
+while (i < 6)  
+{  
+  print(i) \
+  i <- i + 1 \
+  next \
+  break \
+}
+\
+\
+for (x in 1:10)  \
+ { \
+  print(x)\
+}
+
+
+
+
+
+my_function <- function() \
+{ 
+    # create a function with the name my_function
+  print("Hello World!")
+  return (5 * x)
+} 
+
+my_function("Stewie")
+
+
+### Vector of strings
+fruits <- c("banana", "apple", "orange")
+sort(fruits)  # Sort a string
+
+
+### List of strings
+thislist <- list("apple", "banana", "cherry")
+length(thislist)
+"apple" %in% thislist 
+append(thislist, "orange")
+
+### Create a matrix
+thismatrix <- matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+
+### An array 
+multiarray <- array(thisarray, dim = c(4, 3, 2))
+
+
+### Create a data frame
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45)
+)
+
+
+
+### Create a factor
+music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+
 ## Instructions:
 
 1. Identifiers
