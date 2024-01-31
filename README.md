@@ -11,7 +11,7 @@ The R programming language is used for statistical computing and data visualizat
 
 ---
 
-# Code To Run
+## Code To Run
 var1 <- var2 <- var3 <- "Orange" \
 my_var <<- 3
 
