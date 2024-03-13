@@ -204,5 +204,72 @@ Go to the project directory
 
 ```bash
   lex trail.l && gcc lex.yy.c && ./a.out
+  
 ```
+
+# Assignment 2(Syntax Analyzer)
+
+1. A syntax analyzer, also called a parser, is a program that checks the structure (syntax) of code or text. In a few lines:
+
+* It ensures the code/text follows the grammatical rules of the language (like punctuation in a sentence).
+* It verifies if the order and arrangement of elements are correct (like subject-verb order).
+* It catches errors like missing keywords, misplaced characters, or incorrect nesting.
+* It helps ensure the code/text can be understood and processed by a compiler or interpreter.
+
+## Commands to run 
+
+Go to the project directory
+
+```bash 
+  lex lexer.l && yacc -d  parser.y
+```
+```bash
+ gcc lex.yy.c  y.tab.c
+```
+
+```bash
+ ./a.out < input.r
+```
+
+## Features
+
+### Supported Data Types:
+* String
+
+* Integer
+
+* Numeric (potentially for floating-point numbers)
+
+* Complex numbers (if implemented)
+
+* Boolean
+
+---
+### Control Flow Statements:
+* if 
+* else if
+* Else 
+* while
+* for
+---
+### Functions:
+* Ability to define functions with parameters.
+* Function calls to execute the defined functionality.
+---
+### Built-in Mathematical Functions:
+* min(x, y): Finds the minimum value between x and y.
+* max(x, y): Finds the maximum value between x and y.
+* sqrt(x): Calculates the square root of x. (Assuming x is numeric)
+* ceil(x): Finds the smallest integer greater than or equal to x. (Assuming x is numeric)
+* floor(x): Finds the largest integer less than or equal to x. (Assuming x is numeric)
+---
+### Other Features:
+* Comments for adding explanations within the code.
+* Print statements for displaying output.
+* Class Function .
+---
+
+
+
+
 
