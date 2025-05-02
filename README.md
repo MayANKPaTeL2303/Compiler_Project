@@ -1,5 +1,5 @@
 
-# Assignment 1(Lexical Analyser)
+# Lexical Analyser
 
 The R programming language is used for statistical computing and data visualization created by Ross Ihaka and Robert Gentleman.
 
